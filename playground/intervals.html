@@ -1,15 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Intervals and Timers</title>
+    <link rel="stylesheet" href="../base.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Intervals and Timers</title>
-  <link rel="stylesheet" href="../base.css">
-</head>
+  <body>
+    <script>
+      function buzzer() {
+        console.log("BUZZER");
+      }
+      function setImmedInterval(funcToRun, ms) {
+        funcToRun();
 
-<body>
+        return setInterval(funcToRun, ms);
+      }
 
-</body>
+      // setImmedInterval(buzzer, 2000);
+      //   function sayHi() {
+      //   console.log("Hi");
+      //}
+      //setImmedInterval(sayHi, 100);
 
+      function destroy() {
+        document.body.innerHTML = "<p>Destroyed</p>";
+      }
+      const bombTimer = setTimeout(destroy, 5000);
+      window.addEventListener("click", function () {
+        console.log("Clicked");
+        clearTimeout(bombTimer);
+      });
+    </script>
+  </body>
 </html>

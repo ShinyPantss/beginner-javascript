@@ -1,16 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title></title>
+    <link rel="stylesheet" href="../base.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title></title>
-  <link rel="stylesheet" href="../base.css">
-</head>
+  <body>
+    <style>
+      .turtle .jump {
+      }
+      .turtle {
+        position: relative;
+        --x: 0px;
+        --y: 0px;
+        --rotate: 0deg;
+        --rotateX: 0deg;
+        transform: translateX(var(--x)) translateY(var(--y))
+          rotateY(var(--rotate)) rotate(var(--rotateX));
+      }
 
+      .jump {
+        transform: translateX(100px);
+        scale: 1.5;
+        transition: 5s;
+      }
+    </style>
+    <img width="300" src="./turtle.png" alt="Tur" class="turtle" />
 
-<body>
+    <script>
+      const turtle = document.querySelector(".turtle");
 
-</body>
+      let x = 0;
+      let y = 0;
+      let speed = 50;
+      let flipped = false;
 
+      let rotate = 0;
+      function handleKeyDown(event) {
+        if (event.keyCode === 32) {
+          turtle.classList.add("jump");
+          setTimeout(() => {
+            turtle.classList.remove("jump");
+          }, 5000);
+          console.log("jump");
+          return;
+        }
+        if (!event.key.includes("Arrow")) {
+          console.log("That is not a valid move");
+          console.log(event.key);
+          return;
+        }
+        switch (event.key) {
+          case "ArrowUp":
+            y = y - 1;
+            rotate = -90;
+            break;
+          case "ArrowDown":
+            y = y + 1;
+            rotate = 90;
+            break;
+          case "ArrowLeft":
+            x = x - 1;
+            flipped = true;
+            rotate = 0;
+            break;
+          case "ArrowRight":
+            x = x + 1;
+            flipped = false;
+            rotate = 0;
+            break;
+          default:
+            console.log("That is not a valid move");
+            break;
+        }
+
+        turtle.setAttribute(
+          "style",
+          `
+          --rotateX: ${rotate}deg;
+        --rotate: ${flipped ? "180deg" : "0deg"};
+        --x: ${x * speed}px;
+        --y: ${y * speed}px;
+
+      `
+        );
+      }
+
+      window.addEventListener("keydown", handleKeyDown);
+    </script>
+  </body>
 </html>

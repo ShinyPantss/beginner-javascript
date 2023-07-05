@@ -1,17 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title></title>
+    <link rel="stylesheet" href="../base.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title></title>
-  <link rel="stylesheet" href="../base.css">
-</head>
+  <body>
+    <input type="text" name="first" value="wes" />
+    <script src="https://unpkg.com/lodash"></script>
 
-<body>
-  <script>
+    <script>
+      const age = 100;
 
-  </script>
-</body>
+      const person = {
+        age,
+        name: "John",
+        "cool-dude": true,
+        "really cool": true,
+        777: true,
 
+        clothing: {
+          shirts: 10,
+          pants: 2,
+        },
+        sayHello: function (greeting = "Hey") {
+          return `${greeting} ${this.name}`;
+        },
+      };
+      person.clothing.shirts = 100;
+      person.job = "developer";
+      person.age = 99;
+
+      const personFroze = Object.freeze(person);
+      const nameInput = document.querySelector("[name=first]");
+      const name = nameInput ? nameInput.value : "wes";
+
+      const person1 = {
+        name: "John",
+        age: 100,
+        job: "developer",
+        clothes: {
+          shirts: 10,
+          pants: 2,
+        },
+      };
+      const person2 = {
+        name: "larry",
+        age: 12,
+      };
+
+      //const person3 = person1;
+      //person3.name = "wes";
+      //console.log(person1.name);
+
+      //const person3 = { ...person1 };
+      const person3 = _.cloneDeep(person1);
+      person3.clothes.shirts = 100;
+
+      const meatInventory = {
+        bacon: 2,
+        sausage: 3,
+        oyster: 10,
+      };
+
+      const veggieInventory = {
+        lettuce: 5,
+        tomatoes: 3,
+        oyster: 15,
+      };
+
+      const inventory = {
+        ...meatInventory,
+        ...veggieInventory,
+        oyster: 100,
+      };
+      function doStuff(data) {
+        data = "something else";
+        console.log(data);
+      }
+
+      function doStuff2(data) {
+        data.tomatoes = 10000000000;
+        console.log(data);
+      }
+
+      doStuff2(inventory);
+      console.log(inventory);
+    </script>
+  </body>
 </html>
