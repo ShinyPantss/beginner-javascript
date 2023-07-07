@@ -119,14 +119,33 @@
 
       // find the first rating that talks about a burger with find()
       function findBurgRating(feedback, index, feedbackArray) {
-        console.log(index, feedbackArray);
         return feedback.comment.includes("burg");
       }
       const burgRating = feedback.find((item) => item.comment.includes("burg"));
       console.log(burgRating);
       const burgRatingFunc = feedback.find(findBurgRating);
       console.log(burgRatingFunc);
+
+      function findByWord(word) {
+        return function (item) {
+          return item.comment.includes(word);
+        };
+      }
+
+      const burgFinder = feedback.find(findByWord("burg"));
+      console.log(burgFinder);
       // find all ratings that are above 2 with filter()
+
+      function filterByMinRating(minRating) {
+        return function (singleFeedback) {
+          return singleFeedback.rating > minRating;
+        };
+      }
+      const niceReviews = feedback.filter(filterByMinRating(2));
+      const goodReviews = feedback.filter((singleFeedback) => {
+        return singleFeedback.rating > 2;
+      });
+      console.table(goodReviews);
       // find all ratings that talk about a burger with filter()
       // Remove the one star rating however you like!
 
