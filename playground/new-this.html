@@ -1,15 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>New, This, Prototypes and Classes</title>
+    <link rel="stylesheet" href="../base.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>New, This, Prototypes and Classes</title>
-  <link rel="stylesheet" href="../base.css">
-</head>
+  <body>
+    <script>
+      const myDate = new Date("August 11, 2020 ");
+      const myArray = new Array(12, 13);
 
-<body>
+      function Pizza(type, slice) {
+        this.type = type;
+        this.slice = slice;
+      }
+      Pizza.prototype.eat = function () {
+        console.log("Eating pizza");
+      };
+      const pepperoniPizza = new Pizza("pepperoni", 12);
 
-</body>
+      console.log(pepperoniPizza);
 
+      function Tree(name) {
+        this.name = name;
+      }
+
+      const theTree = new Tree("Redwood");
+      console.log(`theTree.constructor is ${theTree.constructor}`);
+    </script>
+  </body>
 </html>

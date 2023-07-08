@@ -170,7 +170,54 @@
           name: `${person.names.first} ${person.names.last}`,
         };
       });
-      console.log(cleanPeople);
+
+      const over40 = cleanPeople.find(function (person) {
+        return person.age > 40;
+      });
+
+      function findById(id) {
+        return function (person) {
+          return person.id === id;
+        };
+      }
+
+      function findByProp(prop, propWeAreLookingFor) {
+        return function (person) {
+          return person[prop] === propWeAreLookingFor;
+        };
+      }
+
+      const student = students.find(findById("565a"));
+      const student2 = students.find(findByProp("first_name", "Brett"));
+
+      console.clear();
+      function tallyNumbers(tally, currentTotal) {
+        console.log({ tally, currentTotal });
+        return tally + currentTotal;
+      }
+      const allOrders = orderTotals.reduce(tallyNumbers, 0);
+
+      function inventoryCounter(totals, currentItem) {
+        // totals[currentItem.type] = totals[currentItem.type] + 1 || 1; //Zor
+
+        if (totals[currentItem.type]) {
+          totals[currentItem.type] = totals[currentItem.type] + 1;
+        } else {
+          totals[currentItem.type] = 1;
+        }
+
+        return totals;
+      }
+
+      function totalPriceInventory(total, currrentValue) {
+        return total + currrentValue.price;
+      }
+
+      const totalInventory = inventory.reduce(totalPriceInventory, 0);
+      console.log(totalInventory);
+
+      const inventoryCounts = inventory.reduce(inventoryCounter, {});
+      console.log(inventoryCounts);
     </script>
   </body>
 </html>
