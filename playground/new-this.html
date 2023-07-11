@@ -6,6 +6,8 @@
     <title>New, This, Prototypes and Classes</title>
     <link rel="stylesheet" href="../base.css" />
   </head>
+  <button class="one">Button 1</button>
+  <button class="two">Button 2</button>
 
   <body>
     <script>
@@ -16,20 +18,24 @@
         this.type = type;
         this.slice = slice;
       }
-      Pizza.prototype.eat = function () {
-        console.log("Eating pizza");
-      };
+
       const pepperoniPizza = new Pizza("pepperoni", 12);
 
       console.log(pepperoniPizza);
 
-      function Tree(name) {
-        this.name = name;
+      const button1 = document.querySelector(".one");
+      const button2 = document.querySelector(".two");
+
+      function tellMeAboutTheButton() {
+        console.log("outside", this);
+
+        setTimeout(() => {
+          this.textContent = "You clicked me";
+        }, 1000);
       }
 
-      const theTree = new Tree("Redwood");
-      console.log(`theTree.constructor is ${theTree.constructor}`);
-      g;
+      button1.addEventListener("click", tellMeAboutTheButton);
+      button2.addEventListener("click", tellMeAboutTheButton);
     </script>
   </body>
 </html>
