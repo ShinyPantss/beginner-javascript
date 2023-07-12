@@ -19,7 +19,19 @@
         this.slice = slice;
       }
 
+      Pizza.prototype.eat = function () {
+        if (this.slice > 0) {
+          this.slice--;
+          console.log(`You have ${this.slice} slices left`);
+        } else {
+          console.log("You have no more slices left");
+        }
+      };
+      Pizza.prototype.describe = function () {
+        return `The ${this.type} pizza has ${this.slice} slices left`;
+      };
       const pepperoniPizza = new Pizza("pepperoni", 12);
+      const canadianPizza = new Pizza("canadian", 8);
 
       console.log(pepperoniPizza);
 

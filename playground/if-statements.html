@@ -1,19 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>If Statements</title>
+    <link rel="stylesheet" href="../base.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>If Statements</title>
-  <link rel="stylesheet" href="../base.css">
-</head>
+  <body>
+    <script>
+      if (10 > 2) {
+        console.log("Yep");
+      }
 
-<body>
-  <script>
-    if (10 > 2) {
-      console.log('Yep');
-    }
-  </script>
-</body>
-
+      function a(first, ...rest) {
+        console.log("first", first);
+        for (let i = 0; i < rest.length; i++) {
+          console.log("rest", rest[i]);
+        }
+        console.log("rest", rest);
+        console.log(rest instanceof Array);
+      }
+      a(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+    </script>
+  </body>
 </html>
