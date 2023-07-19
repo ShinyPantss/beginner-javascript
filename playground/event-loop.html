@@ -1,17 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Event Loop</title>
+    <link rel="stylesheet" href="../base.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Event Loop</title>
-  <link rel="stylesheet" href="../base.css">
-</head>
-
-<body>
-  <script>
-
-  </script>
-</body>
-
+  <body>
+    <div class="callBack">Lorem ipsum dolor sit amet.</div>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+      }
+      .callBack {
+        font-size: 50px;
+        cursor: pointer;
+        margin: 5rem;
+        padding: 10rem;
+        background-color: white;
+        width: 40%;
+        transition: all 0.5s ease-in-out;
+      }
+    </style>
+    <script>
+      const callBack = document.querySelector(".callBack");
+      callBack.addEventListener("click", () => {
+        console.log("I was clicked");
+        callBack.textContent = "Go";
+        setTimeout(function () {
+          callBack.style.backgroundColor = "red";
+        }, 2000);
+      });
+    </script>
+  </body>
 </html>

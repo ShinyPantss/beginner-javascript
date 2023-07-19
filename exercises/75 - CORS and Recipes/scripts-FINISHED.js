@@ -4,7 +4,7 @@ const form = document.querySelector('form.search');
 const recipesGrid = document.querySelector('.recipes');
 
 async function fetchRecipes(query) {
-  const res = await fetch(`${proxy}${baseEndpoint}?q=${query}`);
+  const res = await fetch(`${baseEndpoint}?q=${query}`);
   const data = await res.json();
   return data;
 }
@@ -42,4 +42,4 @@ function displayRecipes(recipes) {
 
 form.addEventListener('submit', handleSubmit);
 // on page load run it with pizza
-fetchAndDisplay('pizza');
+fetchAndDisplay('chicken');

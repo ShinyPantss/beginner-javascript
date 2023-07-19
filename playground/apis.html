@@ -1,17 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>APIs</title>
+    <link rel="stylesheet" href="../base.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>APIs</title>
-  <link rel="stylesheet" href="../base.css">
-</head>
+  <body>
+    <p class="user"></p>
+    <script>
+      function wait(ms = 0) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+      }
+      function handleError(err) {
+        console.log(err);
+      }
+      const endpoint = "https://api.github.com/users/wesbos";
+      userEl = document.querySelector(".user");
 
-<body>
-  <script>
-
-  </script>
-</body>
-
+      async function fetchData(data) {
+        userEl.textContent = "Welcome to the page";
+        m;
+        const endpointt = data;
+        const dataResponse = await fetch(endpointt);
+        const dataJson = await dataResponse.json();
+        console.log(dataJson);
+        await wait(2000);
+        userEl.textContent = `${dataJson.name}  ${dataJson.blog}`;
+      }
+      fetchData(endpoint);
+    </script>
+  </body>
 </html>

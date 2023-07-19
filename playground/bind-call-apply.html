@@ -1,15 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Bind Call and Apply!</title>
+    <link rel="stylesheet" href="../base.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Bind Call and Apply!</title>
-  <link rel="stylesheet" href="../base.css">
-</head>
-
-<body>
-
-</body>
-
+  <body>
+    <script>
+      const person = {
+        firstName: "John",
+        lastName: "Doe",
+        getFullName() {
+          return `${this.firstName} ${this.lastName}`;
+        },
+      };
+      const x = person.getFullName.call({
+        firstName: "Harry",
+        lastName: "Potter",
+      });
+      console.log(x);
+    </script>
+  </body>
 </html>
